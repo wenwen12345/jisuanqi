@@ -33,6 +33,7 @@ class jisuanqi
     public:
     int operator()(string s)
     {
+        bool flag;
         for (int i=0;i<=len;i++)
         if ((index = s.find(fuhao[i])) != string::npos)
         {
@@ -42,12 +43,16 @@ class jisuanqi
                 if (s[index] == fuhao[j])
                 {
                     used = j;
-                    break;
+                    flag = true;
                 }
             }
         }
-        cerr << "bad input" << endl;
-        exit(1);
+        else
+        if(!flag)
+        {
+            cerr << "bad input" << endl;
+            exit(1);
+        }
         ans = fun_array[used](a,b);
         if (ans == -1)
         {
